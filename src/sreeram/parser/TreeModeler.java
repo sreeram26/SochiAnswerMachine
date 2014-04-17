@@ -10,12 +10,17 @@ import edu.stanford.nlp.trees.LabeledScoredTreeNode;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.SimpleTree;
 import raghavan.parser.LexicalParser;
+import raghavan.parser.SochingAnswerEngine;
 import raghavan.parser.StanfordParser;
+import raghavan.query.IQueryResultGenerator;
+import raghavan.query.MysqlQueryResultGenerator;
+import raghavan.query.QueryType;
 import sreeram.domain.Person;
 import sreeram.domain.Result;
 import sreeram.domain.SochTree;
 import sreeram.domain.WordObject;
 import util.Constants;
+import util.QueryComponent;
 import util.Utility;
 
 
@@ -64,11 +69,15 @@ public class TreeModeler {
 				t= newTree;
 				t.setValue("Medal---"+name);
 			}
+			else if(t.nodeString().equalsIgnoreCase("did") )
+			{
+				t.setValue("Did---"+name);
+			}
 			else if(t.nodeString().equalsIgnoreCase("man") || t.nodeString().equalsIgnoreCase("woman"))
 			{
 				t.setValue("Gender---"+name);
 			}
-			else if(t.nodeString().equalsIgnoreCase("Groothis") || t.nodeString().equalsIgnoreCase("Davis"))
+			else if(t.nodeString().equalsIgnoreCase("Groothuis") || t.nodeString().equalsIgnoreCase("Davis"))
 			{
 				t.setValue("Person---"+name);
 			}
@@ -124,6 +133,7 @@ public class TreeModeler {
 			{
 				
 				if(! base.get(count).label().value().equals(other.get(count).label().value()))
+					if(! ( base.get(count).label().value().equals("NNP")|| base.get(count).label().value().equals("NNPS") ) && ( other.get(count).label().value().equals("NNP")|| other.get(count).label().value().equals("NNPS") ))
 					return false;
 				
 			}
@@ -183,14 +193,16 @@ public class TreeModeler {
 		}
 		else
 		{
-			if( (ruleTree.label().value().contains("Country") || ruleTree.label().value().contains("Result") || ruleTree.label().value().contains("Game")||ruleTree.label().value().contains("Person") )&& parseTree.getChildrenAsList().size()==0 )
+			if( (ruleTree.label().value().contains("Country") || ruleTree.label().value().contains("Result") || ruleTree.label().value().contains("Competition")||ruleTree.label().value().contains("Person")||ruleTree.label().value().contains("Medal")||ruleTree.label().value().contains("Gender")||ruleTree.label().value().contains("Did") )&& parseTree.getChildrenAsList().size()==0 )
 			{
 				// Reached leaves of rule List 
 				// if leaves reached of parseList then assign parseList with the corresponding values.
 				 
 				
 					String orig =  parseTree.label().value();
-					parseTree.setValue(orig+ruleTree.label().value());
+					
+					String[] arrStr= ruleTree.label().value().split("---");
+					parseTree.setValue(arrStr[0] + "---" + orig);
 					return;// To end this loop
 				
 			}
@@ -249,12 +261,52 @@ public class TreeModeler {
 		ruleTree.addChild(parseTree);
 	}
 	
+	public QueryComponent setComponent(Tree tree)
+	{
+		QueryComponent objComponent = new QueryComponent();
+		List<Tree> leaves=tree.getLeaves();
+		for(Tree temp: leaves)
+		{
+			if(temp.label().value().contains("---"))
+			{
+				String[] arrStr= temp.label().value().split("---");
+				
+				if(arrStr[0].contains("Country"))
+				{
+					objComponent.setNationality(arrStr[1]);
+				}
+				else if(arrStr[0].contains("Medal"))
+				{
+					objComponent.setMedal(arrStr[1]);
+				}
+				else if(arrStr[0].contains("Gender"))
+				{
+					objComponent.setGender(arrStr[1]);
+				}
+				else if(arrStr[0].contains("Person"))
+				{
+					objComponent.setPerson(arrStr[1]);
+				}
+				else if(arrStr[0].contains("Competition"))
+				{
+					objComponent.setCompetition(arrStr[1]);
+				}
+				else if(arrStr[0].contains("Did"))
+				{
+					objComponent.setQueryType(QueryType.DID);
+				}
+			}
+		}
+		
+		return objComponent;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		StanfordParser parser = new StanfordParser();
 		
 		Tree tree = parser.getTree("Did Groothuis win gold in Speedskating?");
-//		Tree tree1 = parser.getTree("Sweden strikes gold.");
+		Tree tree1 = parser.getTree("Did Matt win gold in SpeedSkating?");
 		
 		
 		List<String> sentences = Utility.readFromFile(Constants.ASSIGNMENT_QUESTIONS_INPUT);
@@ -268,12 +320,12 @@ public class TreeModeler {
 		TreeModeler objTreeModel = new TreeModeler();
 		objTreeModel.changeLeaf(tree);
 		objTreeModel.modelRuleTree(tree);
-//		objTreeModel.getDBMap(tree1, tree);
 
 		for(String temp : sentences)
 		{
-			objTreeModel.changeLeaf(parser.getTree(temp));
-			objTreeModel.addSentenceToModel( parser.getTree(temp) , tree);
+			Tree treeTemp = parser.getTree(temp);
+			objTreeModel.changeLeaf(treeTemp);
+			objTreeModel.addSentenceToModel( treeTemp, tree);
 		}
 		
 		
@@ -284,6 +336,13 @@ public class TreeModeler {
 		
 //		List<String> sentences = Utility.readFromFile(Constants.ASSIGNMENT_INPUT_FILE);
 		
+		objTreeModel.getDBMap(tree1, tree);
+		
+		QueryComponent objComponent = objTreeModel.setComponent(tree1);
+		
+		IQueryResultGenerator objGenerator = new MysqlQueryResultGenerator();
+		util.Result resultFromUtil= objGenerator.getResultForQuery(objComponent);
+		System.out.println(resultFromUtil.getResults());
 		
 		
 		System.out.println(tree);
