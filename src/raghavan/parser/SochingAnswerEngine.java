@@ -13,7 +13,7 @@ public class SochingAnswerEngine {
 		String question2 = "Did a Russian man win gold in speedskating?";
 		String question3 = "Who won gold in speedskating?";
 
-		Tree tree = parser.getTree(question1);
+		Tree tree = parser.getTree(question2);
 		printTree(tree);
 
 	}
