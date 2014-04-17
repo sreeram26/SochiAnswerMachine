@@ -16,6 +16,7 @@ public class MysqlQueryResultGenerator implements IQueryResultGenerator {
 		Result result = new Result();
 		QueryCreator queryCreator = new QueryCreator();
 		String query = queryCreator.getSqlQueryFromQueryComponent(queryComponent);
+		System.out.println(query);
 		if (query != null) {
 			List<String> resultsFromDB = dbReader.getResulFromDB(query);
 			if (!resultsFromDB.isEmpty()) {
