@@ -1,0 +1,252 @@
+(ROOT
+  (S
+    (NP (NNP Norway))
+    (VP (VBZ dominates)
+      (NP (JJ cross) (NN country)))
+    (. .)))
+
+nsubj(dominates-2, Norway-1)
+root(ROOT-0, dominates-2)
+amod(country-4, cross-3)
+dobj(dominates-2, country-4)
+
+(ROOT
+  (S
+    (NP (DT The) (JJ Canadian) (NNS women))
+    (VP (VBD won)
+      (NP (NN gold))
+      (PP (IN in)
+        (NP (NN ice) (NN hockey))))
+    (. .)))
+
+det(women-3, The-1)
+amod(women-3, Canadian-2)
+nsubj(won-4, women-3)
+root(ROOT-0, won-4)
+dobj(won-4, gold-5)
+nn(hockey-8, ice-7)
+prep_in(won-4, hockey-8)
+
+(ROOT
+  (S
+    (NP (NNP Landertinger))
+    (VP (VBZ steals)
+      (NP (NN silver))
+      (PP (IN in)
+        (NP
+          (NP (DT the) (NNS men))
+          (NP (CD 10000) (NN biathlon)))))
+    (. .)))
+
+nsubj(steals-2, Landertinger-1)
+root(ROOT-0, steals-2)
+dobj(steals-2, silver-3)
+det(men-6, the-5)
+prep_in(steals-2, men-6)
+num(biathlon-8, 10000-7)
+dep(men-6, biathlon-8)
+
+(ROOT
+  (S
+    (NP (NNP Stoch))
+    (VP (VBZ captures)
+      (NP
+        (NP (NN ski))
+        (VP (VBG jumping))))
+    (. .)))
+
+nsubj(captures-2, Stoch-1)
+root(ROOT-0, captures-2)
+dobj(captures-2, ski-3)
+vmod(ski-3, jumping-4)
+
+(ROOT
+  (S
+    (NP (NNP Mulder))
+    (VP (VBD won)
+      (NP (NN gold))
+      (PP (IN in)
+        (NP (NN speed) (NN skating))))
+    (. .)))
+
+nsubj(won-2, Mulder-1)
+root(ROOT-0, won-2)
+dobj(won-2, gold-3)
+nn(skating-6, speed-5)
+prep_in(won-2, skating-6)
+
+(ROOT
+  (S
+    (NP (NNP Canadian) (NNP Hamelin))
+    (VP (VBZ wins)
+      (NP
+        (NP (NN gold))
+        (PP (IN in)
+          (NP (DT a)
+            (ADJP (RB highly) (JJ competitive))
+            (CD 1500)))))
+    (. .)))
+
+nn(Hamelin-2, Canadian-1)
+nsubj(wins-3, Hamelin-2)
+root(ROOT-0, wins-3)
+dobj(wins-3, gold-4)
+det(competitive-8, a-6)
+advmod(competitive-8, highly-7)
+prep_in(gold-4, competitive-8)
+num(competitive-8, 1500-9)
+
+(ROOT
+  (S
+    (NP (NNP Morrison))
+    (VP (VBZ takes)
+      (NP
+        (NP (NN silver))
+        (PP (IN in)
+          (NP (DT the) (JJ daunting) (CD 1000)))))
+    (. .)))
+
+nsubj(takes-2, Morrison-1)
+root(ROOT-0, takes-2)
+dobj(takes-2, silver-3)
+det(1000-7, the-5)
+amod(1000-7, daunting-6)
+prep_in(silver-3, 1000-7)
+
+(ROOT
+  (S
+    (NP (PRP She))
+    (VP (VBZ crashes)
+      (PP (IN in)
+        (NP (DT the) (NN super-combined))))
+    (. .)))
+
+nsubj(crashes-2, She-1)
+root(ROOT-0, crashes-2)
+det(super-combined-5, the-4)
+prep_in(crashes-2, super-combined-5)
+
+(ROOT
+  (S
+    (NP (DT The) (NNPS Canadians))
+    (VP (VBP beat)
+      (S
+        (NP (NNP USA))
+        (VP (TO to)
+          (VP (VB take)
+            (NP (NN gold))))))
+    (. .)))
+
+det(Canadians-2, The-1)
+nsubj(beat-3, Canadians-2)
+root(ROOT-0, beat-3)
+nsubj(take-6, USA-4)
+aux(take-6, to-5)
+xcomp(beat-3, take-6)
+dobj(take-6, gold-7)
+
+(ROOT
+  (S
+    (NP (NNP Sweden))
+    (VP (VBZ strikes)
+      (NP (NN gold)))
+    (. .)))
+
+nsubj(strikes-2, Sweden-1)
+root(ROOT-0, strikes-2)
+dobj(strikes-2, gold-3)
+
+(ROOT
+  (S
+    (NP (NNP Austrian) (NNP Landertinger))
+    (VP (VBZ earns)
+      (NP
+        (NP (NN silver))
+        (PP (IN in)
+          (NP (CD 10000m)))))
+    (. .)))
+
+nn(Landertinger-2, Austrian-1)
+nsubj(earns-3, Landertinger-2)
+root(ROOT-0, earns-3)
+dobj(earns-3, silver-4)
+prep_in(silver-4, 10000m-6)
+
+(ROOT
+  (S
+    (NP (NNP Austrian) (NNP Matt))
+    (VP (VBZ wins)
+      (NP
+        (NP (NN gold))
+        (PP (IN in)
+          (NP (NNP Sochi)))))
+    (. .)))
+
+nn(Matt-2, Austrian-1)
+nsubj(wins-3, Matt-2)
+root(ROOT-0, wins-3)
+dobj(wins-3, gold-4)
+prep_in(gold-4, Sochi-6)
+
+(ROOT
+  (S
+    (NP (NNP Mattel))
+    (VP (VBZ places)
+      (NP
+        (NP (JJ third))
+        (PP (IN in)
+          (NP
+            (NP (NN ski))
+            (VP (VBG jumping)
+              (PP (IN behind)
+                (NP (NNP Iraschko-Stolz)
+                  (CC and)
+                  (NNP Vogt))))))))
+    (. .)))
+
+nsubj(places-2, Mattel-1)
+root(ROOT-0, places-2)
+dobj(places-2, third-3)
+prep_in(third-3, ski-5)
+vmod(ski-5, jumping-6)
+prep_behind(jumping-6, Iraschko-Stolz-8)
+prep_behind(jumping-6, Vogt-10)
+conj_and(Iraschko-Stolz-8, Vogt-10)
+
+(ROOT
+  (S
+    (NP (NNP Hosp))
+    (VP (VBZ wins)
+      (NP (NN silver))
+      (PP (IN in)
+        (NP
+          (NP (JJ giant) (NN slalom))
+          (PP (IN in)
+            (NP (NNP Sochi))))))
+    (. .)))
+
+nsubj(wins-2, Hosp-1)
+root(ROOT-0, wins-2)
+dobj(wins-2, silver-3)
+amod(slalom-6, giant-5)
+prep_in(wins-2, slalom-6)
+prep_in(slalom-6, Sochi-8)
+
+(ROOT
+  (S
+    (NP (DT A) (JJ Norwegian) (NN woman))
+    (VP (VBD won)
+      (NP (DT the) (NN gold))
+      (PP (IN in)
+        (NP (JJ ski) (NN cross))))
+    (. .)))
+
+det(woman-3, A-1)
+amod(woman-3, Norwegian-2)
+nsubj(won-4, woman-3)
+root(ROOT-0, won-4)
+det(gold-6, the-5)
+dobj(won-4, gold-6)
+amod(cross-9, ski-8)
+prep_in(won-4, cross-9)
+

@@ -1,0 +1,277 @@
+Sentence:Landertinger steals silver in the men 10000 biathlon.
+(ROOT
+  (S
+    (NP (NNP Landertinger))
+    (VP (VBZ steals)
+      (NP (NN silver))
+      (PP (IN in)
+        (NP
+          (NP (DT the) (NNS men))
+          (NP (CD 10000) (NN biathlon)))))
+    (. .)))
+
+nsubj(steals-2, Landertinger-1)
+root(ROOT-0, steals-2)
+dobj(steals-2, silver-3)
+det(men-6, the-5)
+prep_in(steals-2, men-6)
+num(biathlon-8, 10000-7)
+dep(men-6, biathlon-8)
+
+Sentence:Mulder won gold in speed skating.
+(ROOT
+  (S
+    (NP (NNP Mulder))
+    (VP (VBD won)
+      (NP (NN gold))
+      (PP (IN in)
+        (NP (NN speed) (NN skating))))
+    (. .)))
+
+nsubj(won-2, Mulder-1)
+root(ROOT-0, won-2)
+dobj(won-2, gold-3)
+nn(skating-6, speed-5)
+prep_in(won-2, skating-6)
+
+Sentence:Canadian Hamelin wins gold in a highly competitive 1500.
+(ROOT
+  (S
+    (NP (NNP Canadian) (NNP Hamelin))
+    (VP (VBZ wins)
+      (NP
+        (NP (NN gold))
+        (PP (IN in)
+          (NP (DT a)
+            (ADJP (RB highly) (JJ competitive))
+            (CD 1500)))))
+    (. .)))
+
+nn(Hamelin-2, Canadian-1)
+nsubj(wins-3, Hamelin-2)
+root(ROOT-0, wins-3)
+dobj(wins-3, gold-4)
+det(competitive-8, a-6)
+advmod(competitive-8, highly-7)
+prep_in(gold-4, competitive-8)
+num(competitive-8, 1500-9)
+
+Sentence:The Canadians beat USA to take gold.
+(ROOT
+  (S
+    (NP (DT The) (NNPS Canadians))
+    (VP (VBP beat)
+      (S
+        (NP (NNP USA))
+        (VP (TO to)
+          (VP (VB take)
+            (NP (NN gold))))))
+    (. .)))
+
+det(Canadians-2, The-1)
+nsubj(beat-3, Canadians-2)
+root(ROOT-0, beat-3)
+nsubj(take-6, USA-4)
+aux(take-6, to-5)
+xcomp(beat-3, take-6)
+dobj(take-6, gold-7)
+
+Sentence:Mattel places third in ski jumping behind Iraschko-Stolz and Vogt.
+(ROOT
+  (S
+    (NP (NNP Mattel))
+    (VP (VBZ places)
+      (NP
+        (NP (JJ third))
+        (PP (IN in)
+          (NP
+            (NP (NN ski))
+            (VP (VBG jumping)
+              (PP (IN behind)
+                (NP (NNP Iraschko-Stolz)
+                  (CC and)
+                  (NNP Vogt))))))))
+    (. .)))
+
+nsubj(places-2, Mattel-1)
+root(ROOT-0, places-2)
+dobj(places-2, third-3)
+prep_in(third-3, ski-5)
+vmod(ski-5, jumping-6)
+prep_behind(jumping-6, Iraschko-Stolz-8)
+prep_behind(jumping-6, Vogt-10)
+conj_and(Iraschko-Stolz-8, Vogt-10)
+
+Sentence:Hosp wins silver in giant slalom in Sochi.
+(ROOT
+  (S
+    (NP (NNP Hosp))
+    (VP (VBZ wins)
+      (NP (NN silver))
+      (PP (IN in)
+        (NP
+          (NP (JJ giant) (NN slalom))
+          (PP (IN in)
+            (NP (NNP Sochi))))))
+    (. .)))
+
+nsubj(wins-2, Hosp-1)
+root(ROOT-0, wins-2)
+dobj(wins-2, silver-3)
+amod(slalom-6, giant-5)
+prep_in(wins-2, slalom-6)
+prep_in(slalom-6, Sochi-8)
+
+Sentence:Did Matt win the men slalom?
+(ROOT
+  (SQ (VBD Did)
+    (NP (NNP Matt))
+    (VP (VB win)
+      (NP (DT the) (NNS men) (NN slalom)))
+    (. ?)))
+
+aux(win-3, Did-1)
+nsubj(win-3, Matt-2)
+root(ROOT-0, win-3)
+det(slalom-6, the-4)
+nn(slalom-6, men-5)
+dobj(win-3, slalom-6)
+
+Sentence:Did USA lose to Canada in men hockey?
+(ROOT
+  (SQ (VBD Did)
+    (NP (NNP USA))
+    (VP (VB lose)
+      (PP (TO to)
+        (NP (NNP Canada)))
+      (PP (IN in)
+        (NP (NNS men) (NN hockey))))
+    (. ?)))
+
+aux(lose-3, Did-1)
+nsubj(lose-3, USA-2)
+root(ROOT-0, lose-3)
+prep_to(lose-3, Canada-5)
+nn(hockey-8, men-7)
+prep_in(lose-3, hockey-8)
+
+Sentence:Did Italy depart without a gold medal?
+(ROOT
+  (SQ (VBD Did)
+    (NP (NNP Italy))
+    (VP (VB depart)
+      (PP (IN without)
+        (NP (DT a) (JJ gold) (NN medal))))
+    (. ?)))
+
+aux(depart-3, Did-1)
+nsubj(depart-3, Italy-2)
+root(ROOT-0, depart-3)
+det(medal-7, a-5)
+amod(medal-7, gold-6)
+prep_without(depart-3, medal-7)
+
+Sentence:Did a woman from Korea win the gold medal in gure skating?
+(ROOT
+  (SQ (VBD Did)
+    (NP
+      (NP (DT a) (NN woman))
+      (PP (IN from)
+        (NP (NNP Korea))))
+    (VP (VB win)
+      (NP (DT the) (JJ gold) (NN medal))
+      (PP (IN in)
+        (NP (JJ gure) (NN skating))))
+    (. ?)))
+
+aux(win-6, Did-1)
+det(woman-3, a-2)
+nsubj(win-6, woman-3)
+prep_from(woman-3, Korea-5)
+root(ROOT-0, win-6)
+det(medal-9, the-7)
+amod(medal-9, gold-8)
+dobj(win-6, medal-9)
+amod(skating-12, gure-11)
+prep_in(win-6, skating-12)
+
+Sentence:Who won women figure skating in Sochi?
+(ROOT
+  (SBARQ
+    (WHNP (WP Who))
+    (SQ
+      (VP (VBD won)
+        (SBAR
+          (S
+            (NP (NNS women))
+            (VP (VBP figure)
+              (S
+                (VP (VBG skating)
+                  (PP (IN in)
+                    (NP (NNP Sochi))))))))))
+    (. ?)))
+
+nsubj(won-2, Who-1)
+root(ROOT-0, won-2)
+nsubj(figure-4, women-3)
+ccomp(won-2, figure-4)
+xcomp(figure-4, skating-5)
+prep_in(skating-5, Sochi-7)
+
+Sentence:Where did Sotnikova win figure skating?
+(ROOT
+  (SBARQ
+    (WHADVP (WRB Where))
+    (SQ (VBD did)
+      (NP (NNP Sotnikova))
+      (VP (VB win)
+        (NP (NN figure) (NN skating))))
+    (. ?)))
+
+advmod(win-4, Where-1)
+aux(win-4, did-2)
+nsubj(win-4, Sotnikova-3)
+root(ROOT-0, win-4)
+nn(skating-6, figure-5)
+dobj(win-4, skating-6)
+
+Sentence:Which woman won a gold medal in alpine skiing?
+(ROOT
+  (SBARQ
+    (WHNP (WDT Which) (NN woman))
+    (SQ
+      (VP (VBD won)
+        (NP (DT a) (JJ gold) (NN medal))
+        (PP (IN in)
+          (NP (JJ alpine) (NN skiing)))))
+    (. ?)))
+
+det(woman-2, Which-1)
+nsubj(won-3, woman-2)
+root(ROOT-0, won-3)
+det(medal-6, a-4)
+amod(medal-6, gold-5)
+dobj(won-3, medal-6)
+amod(skiing-9, alpine-8)
+prep_in(won-3, skiing-9)
+
+Sentence:In which sport did Canada win two silver medals?
+(ROOT
+  (SBARQ
+    (WHPP (IN In)
+      (WHNP (WDT which) (NN sport)))
+    (SQ (VBD did)
+      (NP (NNP Canada))
+      (VP (VB win)
+        (NP (CD two) (JJ silver) (NNS medals))))
+    (. ?)))
+
+det(sport-3, which-2)
+prep_in(win-6, sport-3)
+aux(win-6, did-4)
+nsubj(win-6, Canada-5)
+root(ROOT-0, win-6)
+num(medals-9, two-7)
+amod(medals-9, silver-8)
+dobj(win-6, medals-9)
+

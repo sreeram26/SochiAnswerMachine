@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/CoreNLP"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/NLP"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/OpenNLP"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/StanfordNLP"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/StanfordParser"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Mysql"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
