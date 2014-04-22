@@ -1,5 +1,8 @@
 package sreeram.parser;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,7 @@ import edu.stanford.nlp.trees.Tree;
 
 public class TreeModeler {
 	
+	public int leafCount=0;
 	
 	public void changeLeaf(Tree t)
 	{
@@ -86,6 +90,33 @@ public class TreeModeler {
 		
 	}
 	
+	public void changeLeafAtPosition(Tree t , int position, String objType)
+	{
+		if(t.getChildrenAsList().size()!=0)
+		{
+			
+			for(Tree child: t.getChildrenAsList())
+			{
+				changeLeafAtPosition(child,position,objType);
+			}
+			
+		}
+		else
+		{
+			leafCount++;
+			
+			if(leafCount== position)
+			{
+			String name =t.nodeString(); 
+			t.setValue(objType+"---"+name);
+			return;
+			}
+			
+			
+		}
+		
+	}
+	
 	public void modelRuleTree(Tree t)
 	{
 		
@@ -111,6 +142,7 @@ public class TreeModeler {
 
 		
 	}
+	
 	
 	
 	public boolean isSameArray(List<Tree> base , List<Tree> other)
@@ -296,7 +328,29 @@ public class TreeModeler {
 		return objComponent;
 	}
 	
-	public static void main(String[] args) {
+	public void addCorpusInput(String[] objMapList, Tree treeObj)
+	{
+		for(String objMap: objMapList)
+		{
+			if(objMap!=null)
+			{
+				String[] objs = objMap.split(":");
+				List<Tree> leaves=treeObj.getLeaves();
+				
+				if(leaves.size()>=2)
+				{
+				int position = Integer.parseInt(objs[0]);
+				String objType = objs[1];
+				
+				leafCount=0;
+				changeLeafAtPosition(treeObj, position, objType);
+				}
+				
+			}
+		}
+		
+	}
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		StanfordParser parser = new StanfordParser();
 		
@@ -305,8 +359,7 @@ public class TreeModeler {
 		
 		
 		List<String> sentences = Utility.readFromFile(Constants.ASSIGNMENT_QUESTIONS_INPUT);
-//		parser.printTrees(sentences, Constants.ASSIGNMENT_OUTPUT_FILE);
-		
+		List<String> manualTags = Utility.readFromFile(Constants.ASSIGNMENT_QUESTIONS_MANUALTAG);
 		
 		
 		
@@ -315,12 +368,23 @@ public class TreeModeler {
 		TreeModeler objTreeModel = new TreeModeler();
 		objTreeModel.changeLeaf(tree);
 		objTreeModel.modelRuleTree(tree);
-
+		int count =0;
 		for(String temp : sentences)
 		{
+			if(count>=manualTags.size())
+				return;
+			
+			
+			
+			System.out.println("The current sentence being parsed is :");
+			System.out.println(temp);
 			Tree treeTemp = parser.getTree(temp);
-			objTreeModel.changeLeaf(treeTemp);
+			System.out.println("Please Enter the object mapping for the sentence in the format \n Word#:OBJTYPE separated by COMMAS");
+			String[] objMapList= manualTags.get(count).split(",");
+			objTreeModel.addCorpusInput(objMapList, treeTemp);
+//			objTreeModel.changeLeaf(treeTemp);
 			objTreeModel.addSentenceToModel( treeTemp, tree);
+			count++;
 		}
 		
 		

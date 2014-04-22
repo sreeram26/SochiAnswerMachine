@@ -10,6 +10,9 @@ public interface Constants {
 	String ASSIGNMENT_OUTPUT_FILE = "data/assignment-3a-output";
 	String ASSIGNMENT_QUESTIONS_INPUT = "data/inputQuestions.txt";
 
+	//Sreeram
+	String ASSIGNMENT_QUESTIONS_MANUALTAG = "data/ManualTagging.txt";
+
 	// Mysql Db settings
 	final String dbDriver = "com.mysql.jdbc.Driver";
 	final String mydata_url = "jdbc:mysql://localhost:3306/sochi";
@@ -25,7 +28,7 @@ public interface Constants {
 	// Query
 	String GET_ALL_COUNTRIES = "select nationality from athletes;";
 	String GET_SOCHI_RESULT = "select  a.name as player_name,a.nationality as player_nationality,a.gender as player_gender,"
-			+ "c.name competition_name,c.type as competition_type,r.medal as medal from athletes a, competitions c,results r"
+			+ " c.name competition_name,c.type as competition_type,r.medal as medal from athletes a, competitions c,results r"
 			+ " where c.comp_id = r.comp_id  and a.name = r.winner ";
 
 }
