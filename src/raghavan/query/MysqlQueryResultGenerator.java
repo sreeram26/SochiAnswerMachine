@@ -16,23 +16,29 @@ public class MysqlQueryResultGenerator implements IQueryResultGenerator {
 		Result result = new Result();
 		QueryCreator queryCreator = new QueryCreator();
 		String query = queryCreator.getSqlQueryFromQueryComponent(queryComponent);
-		System.out.println(query);
 		if (query != null) {
-			List<String> resultsFromDB = dbReader.getResulFromDB(query);
-			if (!resultsFromDB.isEmpty()) {
-				if (queryComponent.getQueryType() == QueryType.DID) {
-					int count = Integer.parseInt(resultsFromDB.get(0));
-					if (count > 0) {
-						result.addResult("Yes");
-					} else {
-						result.addResult("No");
-					}
+			List<SochiResult> sochiResults = dbReader.getSochiResultFromDB(query);
+
+			if (queryComponent.getQueryType() == QueryType.DID) {
+				if (sochiResults != null && sochiResults.size() > 1) {
+					result.addResult("Yes");
 				} else {
-					result.addAllResults(resultsFromDB);
+					result.addResult("No");
+				}
+
+			} else {
+				if (sochiResults != null) {
+					for (SochiResult sochiResult : sochiResults) {
+						if (queryComponent.getQueryType() == QueryType.WHO) {
+							result.addResult(sochiResult.getPlayerName());
+						}
+					}
+				}else{
+					result.addResult("No result found");
 				}
 			}
+
 		}
 		return result;
 	}
-
 }

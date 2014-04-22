@@ -1,4 +1,4 @@
-package dbreader.mysql;
+package dbreader.sqlite;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,12 +11,11 @@ import raghavan.query.SochiResult;
 import util.Constants;
 import dbreader.IDBReader;
 
-public class MySqlReader implements IDBReader {
-
+public class SqliteReader implements IDBReader {
 
 	public List<SochiResult> getSochiResultFromDB(String query) {
 		List<SochiResult> sochiResults = new ArrayList<SochiResult>();
-		ResultSet results = getResults(query, MysqlDBConnect.getConnection());
+		ResultSet results = getResults(query, SqliteDBConnect.getConnection());
 		if (results != null) {
 			try {
 				while (results.next()) {
@@ -39,7 +38,7 @@ public class MySqlReader implements IDBReader {
 
 	public List<String> getCountriesFromDB() {
 		List<String> countries = new ArrayList<String>();
-		ResultSet results = getResults(Constants.GET_ALL_COUNTRIES, MysqlDBConnect.getConnection());
+		ResultSet results = getResults(Constants.GET_ALL_COUNTRIES, SqliteDBConnect.getConnection());
 		if (results != null) {
 			try {
 				while (results.next()) {

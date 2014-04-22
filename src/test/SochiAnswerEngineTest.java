@@ -16,7 +16,7 @@ public class SochiAnswerEngineTest {
 	IQueryResultGenerator queryResultGenerator = new MysqlQueryResultGenerator();
 
 	@Test
-	public void testDidWithoutNationality() {
+	public void testDidWithoutNationalityYes() {
 		// Did Groothuis win gold in speedskating?
 		QueryComponent queryComponent = new QueryComponent();
 		queryComponent.setPerson("Groothuis");
@@ -26,7 +26,10 @@ public class SochiAnswerEngineTest {
 		queryComponent.setQueryType(QueryType.DID);
 
 		Assert.assertEquals("Yes", queryResultGenerator.getResultForQuery(queryComponent).getResults().get(0));
+	}
 
+	@Test
+	public void testDidWithoutNationalityNo() {
 		// Did Groothuis win silver in speedskating?
 		QueryComponent queryComponent1 = new QueryComponent();
 		queryComponent1.setPerson("Groothuis");
@@ -39,7 +42,7 @@ public class SochiAnswerEngineTest {
 	}
 
 	@Test
-	public void testDidWithNationality() {
+	public void testDidWithNationalityYes() {
 		// Did a Netherlands man win gold in speedskating?
 		QueryComponent queryComponent = new QueryComponent();
 		queryComponent.setNationality("Netherlands");
@@ -49,7 +52,11 @@ public class SochiAnswerEngineTest {
 		queryComponent.setQueryType(QueryType.DID);
 		Assert.assertEquals("Yes", queryResultGenerator.getResultForQuery(queryComponent).getResults().get(0));
 
-		//  Did a Russian man win gold in speedskating?
+	}
+
+	@Test
+	public void testDidWithNationalityNo() {
+		// Did a Russian man win gold in speedskating?
 		QueryComponent queryComponent1 = new QueryComponent();
 		queryComponent1.setNationality("Russian");
 		queryComponent1.setMedal("gold");
@@ -57,12 +64,11 @@ public class SochiAnswerEngineTest {
 		queryComponent1.setGender("Man");
 		queryComponent1.setQueryType(QueryType.DID);
 		Assert.assertEquals("No", queryResultGenerator.getResultForQuery(queryComponent1).getResults().get(0));
-
 	}
-	
+
 	@Test
-	public void testWho(){
-		//Who won gold in speedskating?
+	public void testWho() {
+		// Who won gold in speedskating?
 		QueryComponent queryComponent = new QueryComponent();
 		queryComponent.setCompetition("speedskating");
 		queryComponent.setQueryType(QueryType.WHO);

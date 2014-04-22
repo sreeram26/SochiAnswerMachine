@@ -1,16 +1,8 @@
 package sreeram.parser;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import edu.stanford.nlp.ling.CoreLabel;
-import edu.stanford.nlp.ling.Label;
-import edu.stanford.nlp.trees.LabeledScoredTreeNode;
-import edu.stanford.nlp.trees.Tree;
-import edu.stanford.nlp.trees.SimpleTree;
-import raghavan.parser.LexicalParser;
-import raghavan.parser.SochingAnswerEngine;
 import raghavan.parser.StanfordParser;
 import raghavan.query.IQueryResultGenerator;
 import raghavan.query.MysqlQueryResultGenerator;
@@ -18,10 +10,13 @@ import raghavan.query.QueryType;
 import sreeram.domain.Person;
 import sreeram.domain.Result;
 import sreeram.domain.SochTree;
-import sreeram.domain.WordObject;
 import util.Constants;
 import util.QueryComponent;
 import util.Utility;
+import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.ling.Label;
+import edu.stanford.nlp.trees.LabeledScoredTreeNode;
+import edu.stanford.nlp.trees.Tree;
 
 
 
