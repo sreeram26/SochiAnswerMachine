@@ -86,7 +86,7 @@ public class SochiAnswerEngineTest {
 	@Test
 	public void testQuestionToAnswer(){
 		TreeModeler treeModeler = new TreeModeler();
-
+		treeModeler.parseSentence("Who won gold in speedskating?");
 	}
 
 }
