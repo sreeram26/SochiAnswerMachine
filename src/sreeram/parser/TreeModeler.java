@@ -350,11 +350,12 @@ public class TreeModeler {
 		}
 		
 	}
-	public static void main(String[] args) throws IOException {
+	public void parseSentence(String question)
+	{
 		// TODO Auto-generated method stub
 		StanfordParser parser = new StanfordParser();
 		
-		Tree tree = parser.getTree("Did Groothuis win gold in Speedskating?");
+		Tree tree = parser.getTree(question);
 		Tree tree1 = parser.getTree("Did Matt win gold in SpeedSkating?");
 		
 		
