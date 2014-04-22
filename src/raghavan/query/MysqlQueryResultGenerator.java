@@ -20,7 +20,7 @@ public class MysqlQueryResultGenerator implements IQueryResultGenerator {
 			List<SochiResult> sochiResults = dbReader.getSochiResultFromDB(query);
 
 			if (queryComponent.getQueryType() == QueryType.DID) {
-				if (sochiResults != null && sochiResults.size() > 1) {
+				if (sochiResults != null && sochiResults.size() >= 1) {
 					result.addResult("Yes");
 				} else {
 					result.addResult("No");

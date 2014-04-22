@@ -3,12 +3,15 @@ package test;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeModel;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import raghavan.query.IQueryResultGenerator;
 import raghavan.query.MysqlQueryResultGenerator;
 import raghavan.query.QueryType;
+import sreeram.parser.TreeModeler;
 import util.QueryComponent;
 
 public class SochiAnswerEngineTest {
@@ -77,6 +80,12 @@ public class SochiAnswerEngineTest {
 		results.add("groothuis");
 		results.add("mulder");
 		Assert.assertEquals(results, queryResultGenerator.getResultForQuery(queryComponent).getResults());
+
+	}
+	
+	@Test
+	public void testQuestionToAnswer(){
+		TreeModeler treeModeler = new TreeModeler();
 
 	}
 
