@@ -220,7 +220,7 @@ public class TreeModeler {
 		}
 		else
 		{
-			if( (ruleTree.label().value().contains("Country") || ruleTree.label().value().contains("Result") || ruleTree.label().value().contains("Competition")||ruleTree.label().value().contains("Person")||ruleTree.label().value().contains("Medal")||ruleTree.label().value().contains("Gender")||ruleTree.label().value().contains("Did") )&& parseTree.getChildrenAsList().size()==0 )
+			if( (ruleTree.label().value().contains("Country") || ruleTree.label().value().contains("Result") || ruleTree.label().value().contains("Competition")||ruleTree.label().value().contains("Person")||ruleTree.label().value().contains("Medal")||ruleTree.label().value().contains("Gender")||ruleTree.label().value().contains("Did") ||ruleTree.label().value().contains("Who") )&& parseTree.getChildrenAsList().size()==0 )
 			{
 				// Reached leaves of rule List 
 				// if leaves reached of parseList then assign parseList with the corresponding values.
@@ -354,7 +354,11 @@ public class TreeModeler {
 		}
 		
 	}
-	public void parseSentence(String question)
+	public static void main(String args[])
+	{
+		
+	}
+	public static void parseSentence(String question)
 	{
 		// TODO Auto-generated method stub
 		StanfordParser parser = new StanfordParser();
