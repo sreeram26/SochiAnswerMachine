@@ -10,6 +10,7 @@ public interface Constants {
 	String ASSIGNMENT_INPUT_FILE = "data/assignment-3a";
 	String ASSIGNMENT_OUTPUT_FILE = "data/assignment-3a-output";
 	String ASSIGNMENT_QUESTIONS_INPUT = "data/inputQuestions.txt";
+	String ASSIGNMENT_QUESTIONS_MANUALTAG = "data/ManualTagging.txt";
 	
 	//Mysql Db settings
 	final String dbDriver = "com.mysql.jdbc.Driver";
