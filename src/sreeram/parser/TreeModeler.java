@@ -322,6 +322,10 @@ public class TreeModeler {
 				{
 					objComponent.setQueryType(QueryType.DID);
 				}
+				else if(arrStr[0].contains("Who"))
+				{
+					objComponent.setQueryType(QueryType.WHO);
+				}
 			}
 		}
 		
