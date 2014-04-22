@@ -26,7 +26,7 @@ public interface Constants {
 	String sqlite_password = "encrypted";
 
 	// Query
-	String GET_ALL_COUNTRIES = "select nationality from athletes;";
+	String GET_ALL_COUNTRIES = "select distinct nationality from athletes;";
 	String GET_SOCHI_RESULT = "select  a.name as player_name,a.nationality as player_nationality,a.gender as player_gender,"
 			+ " c.name competition_name,c.type as competition_type,r.medal as medal from athletes a, competitions c,results r"
 			+ " where c.comp_id = r.comp_id  and a.name = r.winner ";

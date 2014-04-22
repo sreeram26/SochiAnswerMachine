@@ -8,6 +8,8 @@ import javax.swing.tree.TreeModel;
 import org.junit.Assert;
 import org.junit.Test;
 
+import dbreader.IDBReader;
+import dbreader.mysql.MySqlReader;
 import raghavan.query.IQueryResultGenerator;
 import raghavan.query.MysqlQueryResultGenerator;
 import raghavan.query.QueryType;
@@ -17,6 +19,8 @@ import util.QueryComponent;
 public class SochiAnswerEngineTest {
 
 	IQueryResultGenerator queryResultGenerator = new MysqlQueryResultGenerator();
+	
+	IDBReader dbReader = new MySqlReader();
 
 	@Test
 	public void testDidWithoutNationalityYes() {
@@ -81,6 +85,11 @@ public class SochiAnswerEngineTest {
 		results.add("mulder");
 		Assert.assertEquals(results, queryResultGenerator.getResultForQuery(queryComponent).getResults());
 
+	}
+	
+	@Test
+	public void testNationalityFromDB(){
+		Assert.assertEquals(14, dbReader.getCountriesFromDB().size());
 	}
 	
 	@Test
