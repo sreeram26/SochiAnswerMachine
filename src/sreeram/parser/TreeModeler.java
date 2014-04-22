@@ -354,66 +354,48 @@ public class TreeModeler {
 		}
 		
 	}
-	public static void main(String args[])
-	{
-		
-	}
-	public static void parseSentence(String question)
+	public void parseSentence(String question)
 	{
 		// TODO Auto-generated method stub
 		StanfordParser parser = new StanfordParser();
 		
+		
+		//Model input for basic tree modeling
 		Tree tree = parser.getTree("Did Groothuis win gold in Speedskating?");
-		Tree tree1 = parser.getTree(question);
+		Tree questionTree = parser.getTree(question);
 		
-		
+		//Get input of the set of questions in the corpus
+		//Get the various user input feed for these set of questions.
 		List<String> sentences = Utility.readFromFile(Constants.ASSIGNMENT_QUESTIONS_INPUT);
 		List<String> manualTags = Utility.readFromFile(Constants.ASSIGNMENT_QUESTIONS_MANUALTAG);
 		
 		
 		
 		
-		System.out.println(tree.getChildrenAsList().getClass().toString());
-		TreeModeler objTreeModel = new TreeModeler();
-		objTreeModel.changeLeaf(tree);
-		objTreeModel.modelRuleTree(tree);
+		changeLeaf(tree);
+		modelRuleTree(tree);
 		int count =0;
+		
+		//Parsing the input sentences and their corresponding manual tags and inputting them into the PARSETREE
 		for(String temp : sentences)
 		{
-			if(count>=manualTags.size())
-				return;
+			if(count>=manualTags.size()) // There is a input sentence but no available manual tagging -> Omit parsing 
+				break;
 			
-			
-			
-			System.out.println("The current sentence being parsed is :");
-			System.out.println(temp);
 			Tree treeTemp = parser.getTree(temp);
-			System.out.println("Please Enter the object mapping for the sentence in the format \n Word#:OBJTYPE separated by COMMAS");
 			String[] objMapList= manualTags.get(count).split(",");
-			objTreeModel.addCorpusInput(objMapList, treeTemp);
-//			objTreeModel.changeLeaf(treeTemp);
-			objTreeModel.addSentenceToModel( treeTemp, tree);
+			addCorpusInput(objMapList, treeTemp); // Adding a sentence and its corpus tag into the tree
+			addSentenceToModel( treeTemp, tree);
 			count++;
 		}
 		
+		getDBMap(questionTree, tree); // parsing the question to identify its tags.
 		
-		
-		
-		
-		
-		
-//		List<String> sentences = Utility.readFromFile(Constants.ASSIGNMENT_INPUT_FILE);
-		
-		objTreeModel.getDBMap(tree1, tree);
-		
-		QueryComponent objComponent = objTreeModel.setComponent(tree1);
+		QueryComponent objComponent = setComponent(questionTree); //Converting from output Tree to Query Component
 		
 		IQueryResultGenerator objGenerator = new MysqlQueryResultGenerator();
 		util.Result resultFromUtil= objGenerator.getResultForQuery(objComponent);
 		System.out.println(resultFromUtil.getResults());
-		
-		
-		System.out.println(tree);
 		
 		
 		
