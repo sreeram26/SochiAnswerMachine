@@ -359,8 +359,8 @@ public class TreeModeler {
 		// TODO Auto-generated method stub
 		StanfordParser parser = new StanfordParser();
 		
-		Tree tree = parser.getTree(question);
-		Tree tree1 = parser.getTree("Did Matt win gold in SpeedSkating?");
+		Tree tree = parser.getTree("Did Groothuis win gold in Speedskating?");
+		Tree tree1 = parser.getTree(question);
 		
 		
 		List<String> sentences = Utility.readFromFile(Constants.ASSIGNMENT_QUESTIONS_INPUT);
