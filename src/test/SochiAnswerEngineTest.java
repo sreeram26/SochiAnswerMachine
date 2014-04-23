@@ -3,24 +3,18 @@ package test;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.tree.TreeModel;
-
 import org.junit.Assert;
 import org.junit.Test;
 
-import dbreader.IDBReader;
-import dbreader.mysql.MySqlReader;
 import raghavan.query.IQueryResultGenerator;
-import raghavan.query.MysqlQueryResultGenerator;
+import raghavan.query.QueryResultGenerator;
 import raghavan.query.QueryType;
 import sreeram.parser.TreeModeler;
 import util.QueryComponent;
 
 public class SochiAnswerEngineTest {
 
-	IQueryResultGenerator queryResultGenerator = new MysqlQueryResultGenerator();
-	
-	IDBReader dbReader = new MySqlReader();
+	IQueryResultGenerator queryResultGenerator = new QueryResultGenerator();
 
 	@Test
 	public void testDidWithoutNationalityYes() {
@@ -89,7 +83,7 @@ public class SochiAnswerEngineTest {
 	
 	@Test
 	public void testNationalityFromDB(){
-		Assert.assertEquals(14, dbReader.getCountriesFromDB().size());
+		Assert.assertEquals(14, queryResultGenerator.getAllCountriesFromDB().size());
 	}
 	
 	@Test

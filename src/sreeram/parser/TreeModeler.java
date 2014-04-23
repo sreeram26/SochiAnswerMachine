@@ -8,7 +8,7 @@ import java.util.List;
 
 import raghavan.parser.StanfordParser;
 import raghavan.query.IQueryResultGenerator;
-import raghavan.query.MysqlQueryResultGenerator;
+import raghavan.query.QueryResultGenerator;
 import raghavan.query.QueryType;
 import sreeram.domain.Person;
 import sreeram.domain.Result;
@@ -393,7 +393,7 @@ public class TreeModeler {
 		
 		QueryComponent objComponent = setComponent(questionTree); //Converting from output Tree to Query Component
 		
-		IQueryResultGenerator objGenerator = new MysqlQueryResultGenerator();
+		IQueryResultGenerator objGenerator = new QueryResultGenerator();
 		util.Result resultFromUtil= objGenerator.getResultForQuery(objComponent);
 		System.out.println(resultFromUtil.getResults());
 		

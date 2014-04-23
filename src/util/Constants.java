@@ -21,7 +21,7 @@ public interface Constants {
 
 	// sqlite Db settings
 	final String sqlite_dbDriver = "org.sqlite.JDBC";
-	final String sqlite_url = "jdbc:sqlite:sochi";
+	final String sqlite_url = "jdbc:sqlite:/Users/raghavankl/Dropbox/code/webservices/SpringDataSource/sochi.db";
 	String sqlite_username = "root";
 	String sqlite_password = "encrypted";
 

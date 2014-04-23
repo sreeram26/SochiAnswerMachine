@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Queue;
 
 import raghavan.query.IQueryResultGenerator;
-import raghavan.query.MysqlQueryResultGenerator;
+import raghavan.query.QueryResultGenerator;
 import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 import util.QueryComponent;
 import util.Result;
@@ -13,7 +13,7 @@ import edu.stanford.nlp.trees.Tree;
 
 public class SochingAnswerEngine {
 
-	IQueryResultGenerator queryResultGenerator = new MysqlQueryResultGenerator();
+	IQueryResultGenerator queryResultGenerator = new QueryResultGenerator();
 
 	public static void main(String[] args) {
 

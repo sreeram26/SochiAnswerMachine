@@ -21,6 +21,8 @@ public class SqliteDBConnect {
 			cnfErr.printStackTrace();
 		} catch (SQLException err) {
 			err.printStackTrace();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
 		}
 	}
 
