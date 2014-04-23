@@ -9,5 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/StanfordNLP"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/StanfordParser"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Mysql"/>
+	<classpathentry kind="lib" path="/Users/raghavankl/Softwares/jars/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
