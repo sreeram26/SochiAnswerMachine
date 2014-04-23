@@ -24,6 +24,7 @@ public class QueryResultGenerator implements IQueryResultGenerator {
 		Result result = new Result();
 		QueryCreator queryCreator = new QueryCreator();
 		String query = queryCreator.getSqlQueryFromQueryComponent(queryComponent);
+		System.out.println(query);
 		if (query != null) {
 			List<SochiResult> sochiResults = dbReader.getSochiResultFromDB(query);
 
@@ -47,6 +48,7 @@ public class QueryResultGenerator implements IQueryResultGenerator {
 			}
 
 		}
+		System.out.println(result);
 		return result;
 	}
 
