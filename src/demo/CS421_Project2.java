@@ -10,8 +10,6 @@ package demo;
 
 import java.util.Scanner;
 
-import raghavan.query.IQueryResultGenerator;
-import raghavan.query.QueryResultGenerator;
 import sreeram.parser.TreeModeler;
 public class CS421_Project2 {
 	

@@ -19,4 +19,11 @@ public class Result {
 		this.results.addAll(resultsFromDB);		
 	}
 
+	@Override
+	public String toString() {
+		return results.toString() ;
+	}
+	
+	
+
 }

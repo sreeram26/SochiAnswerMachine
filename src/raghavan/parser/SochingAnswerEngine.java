@@ -6,7 +6,6 @@ import java.util.Queue;
 
 import raghavan.query.IQueryResultGenerator;
 import raghavan.query.QueryResultGenerator;
-import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 import util.QueryComponent;
 import util.Result;
 import edu.stanford.nlp.trees.Tree;
@@ -15,17 +14,17 @@ public class SochingAnswerEngine {
 
 	IQueryResultGenerator queryResultGenerator = new QueryResultGenerator();
 
-	public static void main(String[] args) {
-
-		String question1 = "Did Groothuis win gold in speedskating?";
-		String question2 = "Did a Russian man win gold in speedskating?";
-		String question3 = "Who won gold in speedskating?";
-
-		SochingAnswerEngine sochingAnswerEngine = new SochingAnswerEngine();
-		
-		Result result = sochingAnswerEngine.getResultForQuestion(question2);
-		
-	}
+//	public static void main(String[] args) {
+//
+//		String question1 = "Did Groothuis win gold in speedskating?";
+//		String question2 = "Did a Russian man win gold in speedskating?";
+//		String question3 = "Who won gold in speedskating?";
+//
+//		SochingAnswerEngine sochingAnswerEngine = new SochingAnswerEngine();
+//		
+//		Result result = sochingAnswerEngine.getResultForQuestion(question2);
+//		
+//	}
 
 	public Result getResultForQuestion(String question) {
 		question = cleanseQuestion(question);

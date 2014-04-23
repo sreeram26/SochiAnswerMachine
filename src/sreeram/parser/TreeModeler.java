@@ -395,8 +395,6 @@ public class TreeModeler {
 		
 		IQueryResultGenerator objGenerator = new QueryResultGenerator();
 		util.Result resultFromUtil= objGenerator.getResultForQuery(objComponent);
-		System.out.println(resultFromUtil.getResults());
-		
 		
 		
 	}
