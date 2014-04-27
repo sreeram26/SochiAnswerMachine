@@ -9,8 +9,8 @@ public interface LexicalParser {
 
 	public Map<String, String> parseSentence(String sentence);
 
-	public void printTrees(List<String> sentences,String outputFile);
-	
+	public void printTrees(List<String> sentences, String outputFile);
+
 	public Tree getTree(String sentence);
 
 }

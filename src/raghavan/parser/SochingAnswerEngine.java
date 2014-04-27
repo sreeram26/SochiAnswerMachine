@@ -14,18 +14,6 @@ public class SochingAnswerEngine {
 
 	IQueryResultGenerator queryResultGenerator = new QueryResultGenerator();
 
-//	public static void main(String[] args) {
-//
-//		String question1 = "Did Groothuis win gold in speedskating?";
-//		String question2 = "Did a Russian man win gold in speedskating?";
-//		String question3 = "Who won gold in speedskating?";
-//
-//		SochingAnswerEngine sochingAnswerEngine = new SochingAnswerEngine();
-//		
-//		Result result = sochingAnswerEngine.getResultForQuestion(question2);
-//		
-//	}
-
 	public Result getResultForQuestion(String question) {
 		question = cleanseQuestion(question);
 		Tree tree = getParseTreeForQuestion(question);
