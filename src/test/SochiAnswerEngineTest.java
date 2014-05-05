@@ -11,10 +11,12 @@ import raghavan.query.QueryResultGenerator;
 import raghavan.query.QueryType;
 import sreeram.parser.TreeModeler;
 import util.QueryComponent;
+import util.Result;
 
 public class SochiAnswerEngineTest {
 
 	IQueryResultGenerator queryResultGenerator = new QueryResultGenerator();
+	TreeModeler treeModeler = new TreeModeler();
 
 	@Test
 	public void testDidWithoutNationalityYes() {
@@ -81,6 +83,20 @@ public class SochiAnswerEngineTest {
 
 	}
 	
+
+	@Test
+	public void testDidWithCompetitionType() {
+		// Who won gold in 500 speedskating?
+		QueryComponent queryComponent = new QueryComponent();
+		queryComponent.setCompetition("speedskating");
+		queryComponent.setQueryType(QueryType.WHO);
+		queryComponent.setCompetitionType("500");
+		queryComponent.setMedal("gold");
+		List<String> results = new ArrayList<String>();
+		results.add("mulder");
+		Assert.assertEquals(results, queryResultGenerator.getResultForQuery(queryComponent).getResults());
+	}
+	
 	@Test
 	public void testNationalityFromDB(){
 		Assert.assertEquals(14, queryResultGenerator.getAllCountriesFromDB().size());
@@ -90,6 +106,43 @@ public class SochiAnswerEngineTest {
 	public void testQuestionToAnswer(){
 		TreeModeler treeModeler = new TreeModeler();
 		treeModeler.parseSentence("Who won gold in speedskating?");
+	}
+	
+	@Test
+	public void testQuestionToAnswerWithCompetitionType(){
+		// Who won gold in 500 speedskating?		
+		Result results = treeModeler.parseSentence("Who won gold in 500 speedskating?");
+		checkTheResults(results,"mulder");
+	}
+
+	
+	@Test
+	public void testAllGivenQuestionsInDocument(){
+
+		//checkTheResults(treeModeler.parseSentence("Did Groothuis win gold in speedskating?"),"Yes");
+		
+		//checkTheResults(treeModeler.parseSentence("Did Davis arrive second in icedancing?"),"No");
+		
+		//checkTheResults(treeModeler.parseSentence("Did a Russian man win gold in speedskating?"),"No");
+		
+		//checkTheResults(treeModeler.parseSentence("Did a Canadian woman arrive second in speedskating?"),"No");
+		
+		//checkTheResults(treeModeler.parseSentence("Who won gold in speedskating?"),"groothuis","mulder");
+		
+		checkTheResults(treeModeler.parseSentence("Who arrived second in speedskating?"),"morrison", "smeekens");
+		
+		checkTheResults(treeModeler.parseSentence("Who won gold in 500 speedskating?"),"mulder");
+	
+	}
+
+
+	private void checkTheResults(Result actualResults,String... expectedResultsString) {
+		
+		List<String> expectedResultsList = new ArrayList<String>();
+		for(String str : expectedResultsString){
+			expectedResultsList.add(str);
+		}
+		Assert.assertEquals(expectedResultsList,actualResults.getResults());
 	}
 
 }

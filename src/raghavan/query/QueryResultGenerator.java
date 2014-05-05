@@ -48,6 +48,7 @@ public class QueryResultGenerator implements IQueryResultGenerator {
 			}
 
 		}
+		System.out.println();
 		System.out.println(result);
 		return result;
 	}

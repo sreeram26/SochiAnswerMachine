@@ -16,10 +16,12 @@ public class CS421_Project2 {
 	public static String currentQuery = new String();
 
 	public static void main(String[] args) {
+		TreeModeler treeModeler = new TreeModeler();
+		
 		System.out.println("Welcome to the Olympics QA System.");
 		System.out.println("Please ask a question. Type 'q' when finished.");
 		System.out.println();
-		TreeModeler treeModeler = new TreeModeler();
+
 		String input;
 		Scanner keyboard = new Scanner(System.in);
 		do{		

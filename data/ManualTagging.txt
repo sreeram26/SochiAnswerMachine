@@ -4,3 +4,9 @@
 1:Did,3:Country,6:Medal,8:Competition
 1:Who,3:Medal,5:Competition
 1:Who,3:Medal,5:Competition
+1:Did,2:Person,4:Medal,6:CompetitionType,7:Competition
+1:Did,2:Person,4:Medal,6:CompetitionType,7:Competition
+1:Did,3:Country,6:Medal,8:CompetitionType,9:Competition
+1:Did,3:Country,6:Medal,8:CompetitionType,9:Competition
+1:Who,3:Medal,5:CompetitionType,6:Competition
+1:Who,3:Medal,5:CompetitionType,6:Competition
