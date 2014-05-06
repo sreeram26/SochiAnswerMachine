@@ -16,7 +16,7 @@ import dbreader.sqlite.SqliteDBConnect;
 public class QueryResultGenerator implements IQueryResultGenerator {
 
 	Connection conn = SqliteDBConnect.getConnection();
-	
+
 	DbReader dbReader = new DbReader(conn);
 
 	@Override
@@ -24,8 +24,9 @@ public class QueryResultGenerator implements IQueryResultGenerator {
 		Result result = new Result();
 		QueryCreator queryCreator = new QueryCreator();
 		String query = queryCreator.getSqlQueryFromQueryComponent(queryComponent);
-		System.out.println(query);
+		
 		if (query != null) {
+			System.out.println(query);
 			List<SochiResult> sochiResults = dbReader.getSochiResultFromDB(query);
 
 			if (queryComponent.getQueryType() == QueryType.DID) {
@@ -34,21 +35,18 @@ public class QueryResultGenerator implements IQueryResultGenerator {
 				} else {
 					result.addResult("No");
 				}
-
-			} else {
-				if (sochiResults != null) {
-					for (SochiResult sochiResult : sochiResults) {
-						if (queryComponent.getQueryType() == QueryType.WHO) {
-							result.addResult(sochiResult.getPlayerName());
-						}
+			}else if (queryComponent.getQueryType() == QueryType.WHO && (sochiResults != null && sochiResults.size() >= 1)) {
+				for (SochiResult sochiResult : sochiResults) {
+					if (queryComponent.getQueryType() == QueryType.WHO) {
+						result.addResult(sochiResult.getPlayerName());
 					}
-				} else {
-					result.addResult("No result found");
 				}
+			} else {
+				result.addResult("No result found");
 			}
-
+		}else{
+			result.addResult("Not a valid question");
 		}
-		System.out.println();
 		System.out.println(result);
 		return result;
 	}

@@ -45,7 +45,10 @@ public class QueryComponent {
 	}
 
 	public String getNationality() {
-		return nationality;
+		if(this.nationality != null){
+			return this.nationality .substring(0, this.nationality.length()-1);
+		}
+		return null;
 	}
 
 	public void setNationality(String nationality) {

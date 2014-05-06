@@ -173,7 +173,8 @@ public class TreeModeler {
 					|| ruleTree.label().value().contains("Competition") || ruleTree.label().value().contains("Person")
 					|| ruleTree.label().value().contains("Medal") || ruleTree.label().value().contains("Gender")
 					|| ruleTree.label().value().contains("Did") || ruleTree.label().value().contains("Who"))
-					|| ruleTree.label().value().contains("CompetitionType") && parseTree.getChildrenAsList().size() == 0) {
+					|| ruleTree.label().value().contains("CompetitionType") 
+					|| ruleTree.label().value().contains("Gender") && parseTree.getChildrenAsList().size() == 0) {
 				// Reached leaves of rule List
 				// if leaves reached of parseList then assign parseList with the
 				// corresponding values.
@@ -253,7 +254,9 @@ public class TreeModeler {
 					objComponent.setQueryType(QueryType.WHO);
 				} else if (arrStr[0].equals("CompetitionType")) {
 					objComponent.setCompetitionType(arrStr[1]);
-				}
+				}else if (arrStr[0].contains("Gender")) {
+					objComponent.setGender(arrStr[1]);
+				} 
 			}
 		}
 

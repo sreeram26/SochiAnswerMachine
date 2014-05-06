@@ -119,20 +119,34 @@ public class SochiAnswerEngineTest {
 	@Test
 	public void testAllGivenQuestionsInDocument(){
 
-		//checkTheResults(treeModeler.parseSentence("Did Groothuis win gold in speedskating?"),"Yes");
+		checkTheResults(treeModeler.parseSentence("Did Groothuis win gold in speedskating?"),"Yes");
 		
-		//checkTheResults(treeModeler.parseSentence("Did Davis arrive second in icedancing?"),"No");
+		checkTheResults(treeModeler.parseSentence("Did Davis arrive second in icedancing?"),"No");
 		
-		//checkTheResults(treeModeler.parseSentence("Did a Russian man win gold in speedskating?"),"No");
+		checkTheResults(treeModeler.parseSentence("Did a Russian man win gold in speedskating?"),"No");
 		
-		//checkTheResults(treeModeler.parseSentence("Did a Canadian woman arrive second in speedskating?"),"No");
+		checkTheResults(treeModeler.parseSentence("Did a Canadian woman arrive second in speedskating?"),"No");
 		
-		//checkTheResults(treeModeler.parseSentence("Who won gold in speedskating?"),"groothuis","mulder");
+		checkTheResults(treeModeler.parseSentence("Who won gold in speedskating?"),"groothuis","mulder");
 		
 		checkTheResults(treeModeler.parseSentence("Who arrived second in speedskating?"),"morrison", "smeekens");
 		
 		checkTheResults(treeModeler.parseSentence("Who won gold in 500 speedskating?"),"mulder");
 	
+	}
+	
+	@Test
+	public void testCompetitionQuestions(){
+		checkTheResults(treeModeler.parseSentence("Did Davis arrive first in icedancing?"),"Yes");
+		
+		checkTheResults(treeModeler.parseSentence("Did an American woman arrive second in icedancing?"),"No");
+		
+		checkTheResults(treeModeler.parseSentence("Did an Russian woman arrive second in icedancing?"),"Yes");
+		
+		checkTheResults(treeModeler.parseSentence("Who won silver in speedskating?"),"morrison", "smeekens");
+		
+		checkTheResults(treeModeler.parseSentence("Did Hoefl-Riesch win gold  in super-combined?"),"Yes");
+						
 	}
 
 

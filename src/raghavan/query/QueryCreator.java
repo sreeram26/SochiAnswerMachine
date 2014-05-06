@@ -9,24 +9,30 @@ public class QueryCreator {
 
 		StringBuffer query = new StringBuffer(Constants.GET_SOCHI_RESULT);
 
-		ifPresentAddArgument(query, "a.nationality", queryComponent.getNationality(), true);
-		ifPresentAddArgument(query, "a.gender", queryComponent.getGender());
-		ifPresentAddArgument(query, "a.name", queryComponent.getPerson());
-		ifPresentAddArgument(query, "r.medal", queryComponent.getMedal());
-		ifPresentAddArgument(query, "c.type", queryComponent.getCompetitionType());
-		ifPresentAddArgument(query, "c.name", queryComponent.getCompetition());
+		int numberOfParameters=0;
+		numberOfParameters += ifPresentAddArgument(query, "a.nationality", queryComponent.getNationality(), true);
+		numberOfParameters += ifPresentAddArgument(query, "a.gender", queryComponent.getGender());
+		numberOfParameters += ifPresentAddArgument(query, "a.name", queryComponent.getPerson());
+		numberOfParameters += ifPresentAddArgument(query, "r.medal", queryComponent.getMedal());
+		numberOfParameters += ifPresentAddArgument(query, "c.type", queryComponent.getCompetitionType());
+		numberOfParameters += ifPresentAddArgument(query, "c.name", queryComponent.getCompetition());
 
-		return query.toString();
+		if(numberOfParameters > 1)
+			return query.toString();
+		
+		return null;
 	}
 
-	private void ifPresentAddArgument(StringBuffer query, String parameter, String argument) {
-		ifPresentAddArgument(query, parameter, argument, false);
+	private int ifPresentAddArgument(StringBuffer query, String parameter, String argument) {
+		return ifPresentAddArgument(query, parameter, argument, false);
 	}
 
-	private void ifPresentAddArgument(StringBuffer query, String parameter, String argument, boolean isLikeCondition) {
+	private int ifPresentAddArgument(StringBuffer query, String parameter, String argument, boolean isLikeCondition) {
 		if (isPresent(argument)) {
 			query.append(appendQueryCondition(parameter, argument, isLikeCondition));
+			return 1;
 		}
+		return 0;
 	}
 
 	private String appendQueryCondition(String parameter, String argument, boolean isLikeCondition) {
